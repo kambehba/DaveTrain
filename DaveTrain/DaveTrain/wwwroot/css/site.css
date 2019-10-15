@@ -2,6 +2,7 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: antiquewhite;
 }
 
 a, .btn-link {
@@ -28,6 +29,7 @@ app {
 
 .main {
     flex: 1;
+    background-color:antiquewhite;
 }
 
 .main .top-row {
@@ -147,4 +149,29 @@ app {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+}
+
+.h1{
+    color:aliceblue;
+}
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 50px 70px 70px 70px 70px 70px;
+    grid-template-rows: 50px 50px 50px 50px 30px 50px;
+    grid-template-areas: "g0 g0 g0 g0 g0 g0" "g1 g1 g1 g1 g1 g1" ". . . . . ." "g2 g2 g2 g2 g2 g2" "g3 g3 g3 . . ." "g4 g4 g4 g5 g5 g5" ". g6 g7 g8 g9 .";
+}
+
+.g0 {
+    grid-area: g0;
+    text-decoration-style: solid;
+    color: aliceblue;
+}
+
+.g1 {
+    grid-area: g1;
+    text-decoration-style: solid;
+    color: aliceblue;
 }

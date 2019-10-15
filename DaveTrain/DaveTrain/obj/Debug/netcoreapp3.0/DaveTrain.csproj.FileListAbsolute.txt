@@ -38,3 +38,4 @@ C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.pdb
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.csproj.CopyComplete
+C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.csprojAssemblyReference.cache
