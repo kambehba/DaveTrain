@@ -1,8 +1,66 @@
 ﻿@page "/"
+@using DaveTrain.Data
+@inject DateClient DateClient
 
-    <div class="container">
-        <h1 class="g0 h1">DAVE's TRAIN</h1>
-    </div>
+<div class="container">
+    <h1 class="g0 h1">DAVE's TRAIN</h1>
+    <div>@result</div>
+
+</div>
+
+@code{
+
+    private DateClient _dateClient;
+    private string result;
+    protected override async Task OnInitializedAsync()
+    {
+
+        // result = await _dateClient.Client.GetStringAsync("http://worldclockapi.com/api/json/est/now");
+
+    }
+
+    protected override void OnInitialized()
+    {
+        _dateClient = DateClient;
+
+        var g = DateTime.Now;
+        result = g.DayOfWeek + " " + g.Month;
+    }
+
+    //protected override void OnInitialized()
+    //{
+
+    //    Task j = GetDateAsync();
+
+    //}
+    // string hh = "strff";
+
+
+    //private async Task GetDateAsync()
+    //{
+    //    //var response = await Http.GetStringAsync("http://worldclockapi.com/api/json/est/now");
+    //    //hh = response;
+
+    //   // var hh = await Http.GetAsync("http://worldclockapi.com/api/json/est/now");
+    //}
+
+
+
+    //public static class ApiHelper
+    //{
+    //    public static HttpClient ApiClient { get; set; }
+
+    //    public static void IntitializeClient()
+    //    {
+    //        ApiClient = new HttpClient();
+    //        ApiClient.DefaultRequestHeaders.Accept.Clear();
+    //        ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    //    }
+    //}
+
+
+}
+
 
 
 

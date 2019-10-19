@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.0": {
       "DaveTrain/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Blazor": "0.7.0",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",
@@ -145,7 +146,7 @@
           "Microsoft.Extensions.Options": "3.0.0.0",
           "Microsoft.Extensions.Primitives": "3.0.0.0",
           "Microsoft.Extensions.WebEncoders": "3.0.0.0",
-          "Microsoft.JSInterop": "3.0.0.0",
+          "Microsoft.JSInterop.Reference": "3.0.0.0",
           "Microsoft.Net.Http.Headers": "3.0.0.0",
           "Microsoft.VisualBasic.Core": "10.0.4.0",
           "Microsoft.VisualBasic": "10.0.0.0",
@@ -314,6 +315,21 @@
           "DaveTrain.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Blazor/0.7.0": {
+        "dependencies": {
+          "Microsoft.JSInterop": "0.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.18319"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
+        }
+      },
+      "Microsoft.JSInterop/0.7.0": {},
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -1040,7 +1056,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.JSInterop/3.0.0.0": {
+      "Microsoft.JSInterop.Reference/3.0.0.0": {
         "compile": {
           "Microsoft.JSInterop.dll": {}
         },
@@ -2014,6 +2030,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.AspNetCore.Blazor/0.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EHuB6kQBKvxfokuG1X69GB9nc7LGcwu3niPVUwR1bUl23cqiVAk7imyxlC0uUzCeqFTTfoL6QMNIzcnF/OEdGg==",
+      "path": "microsoft.aspnetcore.blazor/0.7.0",
+      "hashPath": "microsoft.aspnetcore.blazor.0.7.0.nupkg.sha512"
+    },
+    "Microsoft.JSInterop/0.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b+1JTJL4a7vc45vn2Cjvdn3qZaw5ORv8bTagszrNVh8Di0YLccAMnZPNF+fypr7GDS76Uf4mDaCkOW6/TzRzXA==",
+      "path": "microsoft.jsinterop/0.7.0",
+      "hashPath": "microsoft.jsinterop.0.7.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -2619,7 +2649,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.JSInterop/3.0.0.0": {
+    "Microsoft.JSInterop.Reference/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

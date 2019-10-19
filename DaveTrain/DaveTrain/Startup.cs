@@ -29,6 +29,14 @@ namespace DaveTrain
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            //services.AddHttpClient();
+            services.AddHttpClient<DateClient>(client =>
+            {
+                client.BaseAddress = new Uri("http://worldclockapi.com/api/json/est/now");
+                //client.BaseAddress = new Uri("https://api.github.com/");
+                //client.DefaultRequestHeaders.Add("Accept","application/vnd.github.v3+json");
+               // client.DefaultRequestHeaders.Add("User-Agent","HttpClientFactoryTesting");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

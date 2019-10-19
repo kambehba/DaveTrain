@@ -1,14 +1,66 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.0": {
+      "Microsoft.AspNetCore.Blazor/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.JSInterop": "0.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
+        }
+      },
+      "Microsoft.JSInterop/0.7.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Microsoft.AspNetCore.Blazor/0.7.0": {
+      "sha512": "EHuB6kQBKvxfokuG1X69GB9nc7LGcwu3niPVUwR1bUl23cqiVAk7imyxlC0uUzCeqFTTfoL6QMNIzcnF/OEdGg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.blazor/0.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.xml",
+        "microsoft.aspnetcore.blazor.0.7.0.nupkg.sha512",
+        "microsoft.aspnetcore.blazor.nuspec"
+      ]
+    },
+    "Microsoft.JSInterop/0.7.0": {
+      "sha512": "b+1JTJL4a7vc45vn2Cjvdn3qZaw5ORv8bTagszrNVh8Di0YLccAMnZPNF+fypr7GDS76Uf4mDaCkOW6/TzRzXA==",
+      "type": "package",
+      "path": "microsoft.jsinterop/0.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.JSInterop.dll",
+        "microsoft.jsinterop.0.7.0.nupkg.sha512",
+        "microsoft.jsinterop.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.0": [
+      "Microsoft.AspNetCore.Blazor >= 0.7.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Kam\\.nuget\\packages\\": {}
+    "C:\\Users\\Kam\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -19,6 +71,9 @@
       "packagesPath": "C:\\Users\\Kam\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Kam\\Documents\\GitHub\\DaveTrain\\DaveTrain\\DaveTrain\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Kam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -43,6 +98,12 @@
     },
     "frameworks": {
       "netcoreapp3.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Blazor": {
+            "target": "Package",
+            "version": "[0.7.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
