@@ -164,18 +164,17 @@ app {
 .container {
     display: grid;
     grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
     grid-template-areas: "g0 g0 g0"
         "g1 g1 g1"
-        ". . ."
-        ". . ."
         "g2 g2 g2"
         "g3 g3 g3"
         ". . ."
         "g4 g4 g4"
         ". . ."
         "g5 g5 g5"
-        ". . .";
+        ". . ."
+        "g6 g6 g6";
 }
 
 .g0 {
@@ -224,4 +223,59 @@ app {
     font-display: block;
     font-weight: Bold;
     font-size: larger;
+}
+
+.g6 {
+    grid-area: g6;
+   
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-areas: "g10 g10 g10" "g11 g11 g11" "g12 g12 g12" "g13 g13 g13" "g14 g14 g14" "g15 g15 g15" ". . ." "g16 g16 g16";
+}
+
+.g10 {
+    grid-area: g10;
+    text-decoration-style: solid;
+    margin-left: 1rem;
+}
+
+.g11 {
+    grid-area: g11;
+    text-decoration-style: wavy;
+    color: crimson;
+    margin-left: 2rem;
+}
+
+.g12 {
+    grid-area: g12;
+    text-decoration-style: solid;
+    color:blue;
+}
+
+.g13 {
+    grid-area: g13;
+    text-decoration-style: solid;
+    color: ButtonFace;
+}
+
+.g14 {
+    grid-area: g14;
+    text-decoration-style: solid;
+    color: crimson;
+    margin-left: 2rem;
+  
+}
+
+.g15 {
+    grid-area: g15;
+    text-decoration-style: solid;
+    color: blue;
+}
+
+.g16 {
+    grid-area: g16;
 }

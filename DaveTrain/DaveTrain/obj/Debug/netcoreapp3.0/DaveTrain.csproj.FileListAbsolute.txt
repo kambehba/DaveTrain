@@ -138,3 +138,4 @@ C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\Razor\_Imports.razor.g.cs
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\DestComponent.razor.g.cs
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\Razor\Pages\DestComponent.razor.g.cs
+C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.csprojAssemblyReference.cache
