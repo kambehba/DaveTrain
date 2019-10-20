@@ -3,10 +3,15 @@
 @inject DateClient DateClient
 
     <div class="container">
-        <h2 class="g0 h2">Welcome To</h2>
-        <h2 class="g1 h2">DAVE's TRAIN</h2>
-        <div class="g2">@currentWeekDay</div>
-        <div class="g3">@currentMonth</div>
+        <h1 class="g1">Dave's Train</h1>
+        <h1 class="g2">@currentWeekDay</h1>
+        <h3 class="g3">@currentMonth</h3>
+        <div class="g4">Destanation:</div>
+        
+        <button class="g5 btn-danger">
+            Where You Go ?
+        </button>
+       
 
     </div>
 
@@ -29,7 +34,7 @@
 
         var dateTime = DateTime.Now;
         currentWeekDay = dateTime.DayOfWeek.ToString();
-        currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") +"," + DateTime.Now.ToString("yyyy");
+        currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") +", " + DateTime.Now.ToString("yyyy");
     }
 
     //protected override void OnInitialized()
