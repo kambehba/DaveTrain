@@ -1,19 +1,20 @@
 ﻿@page "/"
 @using DaveTrain.Data
 @inject DateClient DateClient
+@inject NavigationManager NavigationManager
 
-    <div class="container">
-        <h1 class="g1">Dave's Train</h1>
-        <h1 class="g2">@currentWeekDay</h1>
-        <h3 class="g3">@currentMonth</h3>
-        <div class="g4">Destanation:</div>
-        
-        <button class="g5 btn-danger">
-            Where You Go ?
-        </button>
-       
+<div class="container">
+    <h1 class="g1">Dave's Train</h1>
+    <h1 class="g2">@currentWeekDay</h1>
+    <h3 class="g3">@currentMonth</h3>
+    <div class="g4">Destanation:</div>
 
-    </div>
+    <button class="g5 btn-danger"  @onclick="GoToDest">
+        Where You Go ?
+    </button>
+
+
+</div>
 
 @code{
 
@@ -35,6 +36,7 @@
         var dateTime = DateTime.Now;
         currentWeekDay = dateTime.DayOfWeek.ToString();
         currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") +", " + DateTime.Now.ToString("yyyy");
+       
     }
 
     //protected override void OnInitialized()
@@ -73,6 +75,11 @@
         string month = string.Empty;
 
         return month;
+    }
+
+    private void GoToDest()
+    {
+         NavigationManager.NavigateTo("/destination");
     }
 
 

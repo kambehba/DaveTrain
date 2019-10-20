@@ -1,0 +1,32 @@
+﻿@inject NavigationManager NavigationManager
+@page "/destination"
+<div class="container">
+    <h1 class="g1">Passenger Name</h1>
+    <select class="g3">
+        <option value="Kam">Kam</option>
+        <option value="Dave">Dave</option>
+        <option value="Ben">Ben</option>
+        <option value="Steve">Audi</option>
+    </select>
+    <h1 class="g4">Select Your Destination...</h1>
+    <select class="g5">
+        <option value="ChickFla">ChickFla</option>
+        <option value="Subway">Subway</option>
+        <option value="Chedders">Chedders</option>
+        <option value="Chipotle">Chipotle</option>
+    </select>
+
+    <button class="g6 btn-danger" @onclick="OnSubmit">
+        Submit
+    </button>
+
+</div>
+
+@code {
+
+    private void OnSubmit()
+    {
+         NavigationManager.NavigateTo("/");
+    }
+
+}
