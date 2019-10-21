@@ -1,5 +1,9 @@
 ﻿@inject NavigationManager NavigationManager
 @page "/destination"
+@using FireSharp.Config;
+@using FireSharp.Interfaces;
+@using FireSharp.Response;
+
 <div class="container2">
     <h3 class="g11">Passenger:</h3>
     <select class="g12">
@@ -26,9 +30,26 @@
 
 @code {
 
+     IFirebaseClient client;
+
+
+    IFirebaseConfig config = new FirebaseConfig
+    {
+        AuthSecret = "II3bycCtijU0NplKxY7HoJ1e8YLtIY92PRYHdBRu",
+        BasePath = "https://dazzling-torch-8270.firebaseio.com/"
+    };
+
+    protected override void OnInitialized()
+    {
+        client = new FireSharp.FirebaseClient(config);
+        
+    }
+
+
     private void OnSubmit()
     {
-         NavigationManager.NavigateTo("/");
+        client.Set("DavesTrain/destinations/1/name","QQQ");
+        NavigationManager.NavigateTo("/");
     }
 
 }
