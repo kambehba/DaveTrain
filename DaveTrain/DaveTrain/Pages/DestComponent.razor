@@ -7,19 +7,18 @@
 <div class="container2">
     <h3 class="g11">Passenger:</h3>
     <select class="g12">
-        <option value="Kam">Kam</option>
-        <option value="Dave">Dave</option>
-        <option value="Ben">Ben</option>
-        <option value="Steve">Steve</option>
+        @for(int i = 0; i < _passengers.Count; i++)
+        {
+            <option value="@_passengers[i].Name">@_passengers[i].Name</option>
+        }
     </select>
+    
     <h3 class="g14">Destination:</h3>
-    <select class="g15">
-        <option value="ChickFla">ChickFla</option>
-        <option value="Subway">Subway</option>
-        <option value="Chedders">Chedders</option>
-        <option value="Chipotle">Chipotle</option>
-        <option value="PDQ">PDQ</option>
-        <option value="PDQ">Fire House</option>
+    <select class="g15" @bind="_selectdDestination.Id">
+        @for(int i = 0; i < _destinations.Count; i++)
+        {
+            <option value="@_destinations[i].Id">@_destinations[i].Name</option>
+        }
     </select>
 
     <button class="g16 btn-danger" @onclick="OnSubmit">
@@ -30,7 +29,15 @@
 
 @code {
 
-     IFirebaseClient client;
+    IFirebaseClient client;
+
+    private List<Passenger> _passengers;
+    private List<Destination> _destinations;
+
+    private Passenger _passenger = new Passenger();
+    private Destination _destination = new Destination();
+
+    private Destination _selectdDestination = new Destination();
 
 
     IFirebaseConfig config = new FirebaseConfig
@@ -41,15 +48,63 @@
 
     protected override void OnInitialized()
     {
+        _passengers = new List<Passenger>();
+        _destinations = new List<Destination>();
+
+        PopulatePassengersAndDestinations();
+
         client = new FireSharp.FirebaseClient(config);
-        
+
     }
 
 
     private void OnSubmit()
     {
-        client.Set("DavesTrain/destinations/1/name","QQQ");
         NavigationManager.NavigateTo("/");
+        var ww = client.Get("DavesTrain/destinations/" + _selectdDestination.Id + "/vote");
+        int jj = ww.ResultAs<int>();
+        jj = jj + 1;
+        client.Set("DavesTrain/destinations/" + _selectdDestination.Id + "/vote", jj);
+
     }
+
+    private void PopulatePassengersAndDestinations()
+    {
+        _passengers.Add(new Passenger() {Name="Dave",Id=1 });
+
+        _passengers.Add(new Passenger() {Name="Ben",Id=2 });
+
+        _passengers.Add(new Passenger() {Name="Kam",Id=3 });
+
+        _passengers.Add(new Passenger() {Name="Steve",Id=4 });
+
+        _passengers.Add(new Passenger() {Name="Bart",Id=5 });
+
+        _destinations.Add(new Destination() {Name="Cheddar's",Id=1 });
+
+        _destinations.Add(new Destination() {Name="Fire House",Id=2 });
+
+        _destinations.Add(new Destination() {Name="Chick-fil-A",Id=3 });
+
+        _destinations.Add(new Destination() {Name="PDQ",Id=4 });
+
+        _destinations.Add(new Destination() {Name="4 Rivers",Id=5 });
+        
+     
+    }
+
+    public class Passenger
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class Destination
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+
 
 }
