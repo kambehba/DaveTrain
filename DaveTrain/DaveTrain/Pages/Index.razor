@@ -3,13 +3,14 @@
 @inject DateClient DateClient
 @inject NavigationManager NavigationManager
 
+
 <div class="container">
     <h1 class="g0">Dave's Train</h1>
     <h1 class="g2">@currentWeekDay</h1>
     <h3 class="g3">@currentMonth</h3>
-    <div class="g4">Destanation:</div>
+    <div class="g4"><h2>Destanation:</h2> <h5 style="color:crimson">@Winner.Name</h5> </div>
 
-    <button class="g5 btn-danger"  @onclick="GoToDest">
+    <button class="g5 btn-danger" @onclick="GoToDest">
         Where for Lunch ?
     </button>
 
@@ -18,9 +19,11 @@
 
 @code{
 
+
     private DateClient _dateClient;
     private string currentWeekDay;
     private string currentMonth;
+    // private string Winner;
 
     protected override async Task OnInitializedAsync()
     {
@@ -29,16 +32,24 @@
 
     }
 
+   
+
+
     protected override void OnInitialized()
     {
         _dateClient = DateClient;
 
+        if(string.IsNullOrEmpty(Winner.Name)) Winner.Name = "Pending...";
+
         var dateTime = DateTime.Now;
         currentWeekDay = dateTime.DayOfWeek.ToString();
-        currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") +", " + DateTime.Now.ToString("yyyy");
-       
+        currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
+
+        NavigationManager.LocationChanged += OnLocationChanges;
+
     }
 
+  
     //protected override void OnInitialized()
     //{
 
@@ -79,7 +90,21 @@
 
     private void GoToDest()
     {
-         NavigationManager.NavigateTo("/destination");
+        NavigationManager.NavigateTo("/destination");
+
+      
+    }
+
+    private void ProcessVotes()
+    {
+
+    }
+
+    private void OnLocationChanges(object sender,LocationChangedEventArgs e)
+    {
+        var kk = Winner.Name;
+
+          StateHasChanged();
     }
 
 
