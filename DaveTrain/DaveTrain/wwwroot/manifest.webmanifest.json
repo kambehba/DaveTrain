@@ -1,0 +1,22 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "DaveTrain",
+  "scope": "/",
+  "display": "browser",
+  "start_url": "https://davestrain.azurewebsites.net/",
+  "short_name": "DaveTrain",
+  "theme_color": "transparent",
+  "description": "",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": "",
+  "prefer_related_applications": "false",
+  "icons": [
+    {
+      "src": "https://davestrain.azurewebsites.net/favicon.ico",
+      "sizes": "16x16 32x32 48x48 64x64"
+    }
+  ],
+  "generated": "true"
+}
