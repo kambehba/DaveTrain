@@ -5,6 +5,8 @@
 @using FireSharp.Interfaces;
 @using FireSharp.Response;
 
+@inject DestinationService destinationService;
+
 <div class="container2">
     <h3 class="g11">Passenger:</h3>
     <select class="g12">
@@ -76,7 +78,7 @@
         //var gg = fd.Max(x => x.vote);
         DestinationModel maxItem = fd.OrderByDescending(obj => obj.vote).First();
 
-        Winner.Name = maxItem.name;
+        Winner.Name = destinationService.GetWinner(); //maxItem.name;
 
         NavigationManager.NavigateTo("/");
 

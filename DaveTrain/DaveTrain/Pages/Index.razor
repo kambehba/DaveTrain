@@ -2,7 +2,7 @@
 @using DaveTrain.Data
 @inject DateClient DateClient
 @inject NavigationManager NavigationManager
-
+@inject DestinationService destinationService;
 
 <div class="container">
     <h1 class="g0">Dave's Train</h1>
@@ -32,14 +32,14 @@
 
     }
 
-   
+
 
 
     protected override void OnInitialized()
     {
         _dateClient = DateClient;
 
-        if(string.IsNullOrEmpty(Winner.Name)) Winner.Name = "Pending...";
+        if (string.IsNullOrEmpty(Winner.Name)) Winner.Name = destinationService.GetWinner();
 
         var dateTime = DateTime.Now;
         currentWeekDay = dateTime.DayOfWeek.ToString();
@@ -49,7 +49,7 @@
 
     }
 
-  
+
     //protected override void OnInitialized()
     //{
 
@@ -92,7 +92,7 @@
     {
         NavigationManager.NavigateTo("/destination");
 
-      
+
     }
 
     private void ProcessVotes()
@@ -100,11 +100,11 @@
 
     }
 
-    private void OnLocationChanges(object sender,LocationChangedEventArgs e)
+    private void OnLocationChanges(object sender, LocationChangedEventArgs e)
     {
         var kk = Winner.Name;
 
-          StateHasChanged();
+        StateHasChanged();
     }
 
 
