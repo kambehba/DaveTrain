@@ -39,7 +39,7 @@
     private Destination _destination = new Destination();
 
     private Destination _selectdDestination = new Destination();
-    
+
 
     IFirebaseConfig config = new FirebaseConfig
     {
@@ -51,7 +51,7 @@
     {
         _passengers = new List<Passenger>();
         _destinations = new List<Destination>();
-        
+
         PopulatePassengersAndDestinations();
 
         client = new FireSharp.FirebaseClient(config);
@@ -63,7 +63,7 @@
 
     private void OnSubmit()
     {
-       
+
         var ww = client.Get("DavesTrain/destinations/" + _selectdDestination.Id + "/vote");
         int jj = ww.ResultAs<int>();
         jj = jj + 1;
@@ -71,9 +71,14 @@
 
         var fd = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
 
-        Winner.Name = fd[0].name;
 
-         NavigationManager.NavigateTo("/");
+      //  var f = fd.OrderByDescending(x=>x.vote);
+        //var gg = fd.Max(x => x.vote);
+        DestinationModel maxItem = fd.OrderByDescending(obj => obj.vote).First();
+
+        Winner.Name = maxItem.name;
+
+        NavigationManager.NavigateTo("/");
 
     }
 
@@ -89,15 +94,17 @@
 
         _passengers.Add(new Passenger() { Name = "Bart", Id = 5 });
 
+        _destinations.Add(new Destination() { Name = "Little Greek", Id = 0 });
+
         _destinations.Add(new Destination() { Name = "Cheddar's", Id = 1 });
 
         _destinations.Add(new Destination() { Name = "Fire House", Id = 2 });
 
         _destinations.Add(new Destination() { Name = "Chick-fil-A", Id = 3 });
 
-        _destinations.Add(new Destination() { Name = "PDQ", Id = 4 });
+        _destinations.Add(new Destination() { Name = "Lazy Moon", Id = 4 });
 
-        _destinations.Add(new Destination() { Name = "4 Rivers", Id = 5 });
+        _destinations.Add(new Destination() { Name = "Chipotle", Id = 5 });
 
 
     }

@@ -130,7 +130,6 @@ C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Debug\netcoreapp
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Debug\netcoreapp3.0\System.Net.Http.Extensions.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Debug\netcoreapp3.0\System.Net.Http.Primitives.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\DestComponent.razor.g.cs
-C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.csprojAssemblyReference.cache
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\DaveTrain.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\RazorDeclaration\DaveTrain.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Debug\netcoreapp3.0\Razor\App.razor.g.cs
