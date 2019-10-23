@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\daveTrain.png" />
+    <Content Remove="wwwroot\img\logo1.png" />
+    <Content Remove="wwwroot\img\logo2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="0.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
@@ -15,6 +21,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\img\logo1.png" />
+    <Resource Include="wwwroot\img\logo2.png" />
   </ItemGroup>
 
 </Project>
