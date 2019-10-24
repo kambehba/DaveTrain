@@ -7,7 +7,6 @@
   <ItemGroup>
     <Content Remove="wwwroot\img\daveTrain.png" />
     <Content Remove="wwwroot\img\logo1.png" />
-    <Content Remove="wwwroot\img\logo2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,8 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="wwwroot\img\logo1.png" />
-    <Resource Include="wwwroot\img\logo2.png" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>
