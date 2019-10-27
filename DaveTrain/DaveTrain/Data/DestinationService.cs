@@ -11,6 +11,7 @@ namespace DaveTrain.Data
 {
     public class DestinationService
     {
+        public event EventHandler DataUpdated;
         private IFirebaseClient client;
 
         IFirebaseConfig config = new FirebaseConfig
@@ -19,10 +20,19 @@ namespace DaveTrain.Data
             BasePath = "https://dazzling-torch-8270.firebaseio.com/"
         };
 
+        public async Task dothis()
+        {
+            EventStreamResponse response = await client.OnAsync("DavesTrain/passengers", (sender, args, context) => {
+                if(DataUpdated != null) DataUpdated.Invoke(this,EventArgs.Empty);
+            });
+        }
+
 
         public DestinationService()
         {
             client = new FireSharp.FirebaseClient(config);
+            Task h = dothis();
+          
         }
         public string GetWinner()
         {
