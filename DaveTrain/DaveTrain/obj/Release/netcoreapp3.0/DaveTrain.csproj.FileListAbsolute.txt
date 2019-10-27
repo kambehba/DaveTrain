@@ -39,7 +39,6 @@ C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Release\netcorea
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Release\netcoreapp3.0\DaveTrain.csproj.CopyComplete
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Release\netcoreapp3.0\DaveTrain.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Release\netcoreapp3.0\DaveTrain.pdb
-C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\obj\Release\netcoreapp3.0\DaveTrain.csprojAssemblyReference.cache
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Release\netcoreapp3.0\FireSharp.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Release\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Kam\Documents\GitHub\DaveTrain\DaveTrain\DaveTrain\bin\Release\netcoreapp3.0\Microsoft.Threading.Tasks.Extensions.Desktop.dll

@@ -28,8 +28,8 @@ namespace DaveTrain
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<DestinationService>();
+            services.AddSingleton<PassengerService>(); 
             //services.AddHttpClient();
             services.AddHttpClient<DateClient>(client =>
             {

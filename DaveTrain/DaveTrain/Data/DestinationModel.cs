@@ -7,6 +7,7 @@ namespace DaveTrain.Data
 {
     public class DestinationModel
     {
+        public int Id { get; set; }
         public string name { get; set; }
         public int vote { get; set; }
     }

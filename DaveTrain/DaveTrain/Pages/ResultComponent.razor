@@ -1,0 +1,122 @@
+﻿@page "/result"
+@inject NavigationManager NavigationManager
+@inject PassengerService passengerService;
+@using DaveTrain.Data
+@using FireSharp.Config;
+@using FireSharp.Interfaces;
+@using FireSharp.Response;
+
+@inject DestinationService destinationService;
+
+    <div class="container3">
+      
+        <div class="g18">
+            @foreach (var item in _passengers)
+            {
+                <h5>@item.Name: @item.VotedFor</h5>
+            }
+        </div>
+
+        <h2 class="g20">Winner is :</h2>
+        <h2 class="g21">@AppData.Winner</h2>
+
+    </div>
+
+@code {
+
+    IFirebaseClient client;
+
+
+    private List<DestinationModel> _destinations;
+    private List<PassengerModel> _passengers;
+
+    private Destination _destination = new Destination();
+
+    private Destination _selectdDestination = new Destination();
+
+
+    IFirebaseConfig config = new FirebaseConfig
+    {
+        AuthSecret = "II3bycCtijU0NplKxY7HoJ1e8YLtIY92PRYHdBRu",
+        BasePath = "https://dazzling-torch-8270.firebaseio.com/"
+    };
+
+    protected override void OnInitialized()
+    {
+        client = new FireSharp.FirebaseClient(config);
+
+        _destinations = new List<DestinationModel>();
+        _destinations = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
+
+        //   PopulatePassengersAndDestinations();
+
+        _passengers = passengerService.GetAllPassengers();
+
+
+
+    }
+
+
+    private void OnSubmit()
+    {
+
+        var ww = client.Get("DavesTrain/destinations/" + _selectdDestination.Id + "/vote");
+        int jj = ww.ResultAs<int>();
+        jj = jj + 1;
+        client.Set("DavesTrain/destinations/" + _selectdDestination.Id + "/vote", jj);
+
+        // _destinations = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
+
+
+        //  var f = fd.OrderByDescending(x=>x.vote);
+        //var gg = fd.Max(x => x.vote);
+        DestinationModel maxItem = _destinations.OrderByDescending(obj => obj.vote).First();
+
+        AppData.Winner = destinationService.GetWinner(); //maxItem.name;
+
+        NavigationManager.NavigateTo("/result");
+
+    }
+
+    private void PopulatePassengersAndDestinations()
+    {
+        //_passengers.Add(new Passenger() { Name = "Dave", Id = 1 });
+
+        //_passengers.Add(new Passenger() { Name = "Ben", Id = 2 });
+
+        //_passengers.Add(new Passenger() { Name = "Kam", Id = 3 });
+
+        //_passengers.Add(new Passenger() { Name = "Steve", Id = 4 });
+
+        //_passengers.Add(new Passenger() { Name = "Bart", Id = 5 });
+
+        //_destinations.Add(new Destination() { Name = "Little Greek", Id = 0 });
+
+        //_destinations.Add(new Destination() { Name = "Cheddar's", Id = 1 });
+
+        //_destinations.Add(new Destination() { Name = "Fire House", Id = 2 });
+
+        //_destinations.Add(new Destination() { Name = "Chick-fil-A", Id = 3 });
+
+        //_destinations.Add(new Destination() { Name = "Lazy Moon", Id = 4 });
+
+        //_destinations.Add(new Destination() { Name = "Chipotle", Id = 5 });
+
+
+    }
+
+    public class Passenger
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class Destination
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+
+
+}
