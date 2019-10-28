@@ -9,19 +9,23 @@
 
 @inject DestinationService destinationService;
 
-<div class="container3">
+    <div class="container3">
 
-    <div class="g18">
-        @foreach (var item in _passengers)
-        {
-            <h5>@item.Name: @item.VotedFor</h5>
-        }
+        <div class="g18">
+            @foreach (var item in _passengers)
+            {
+                <h5>@item.Name: @item.VotedFor</h5>
+            }
+        </div>
+
+        <h2 class="g20">Winner is :</h2>
+        <h2 class="g21">@AppData.Winner</h2>
+
+        <button class="g22 b1 btn-warning" @onclick="OnRefresh">
+            Referesh
+        </button>
+
     </div>
-
-    <h2 class="g20">Winner is :</h2>
-    <h2 class="g21">@AppData.Winner</h2>
-
-</div>
 
 @code {
 
@@ -35,6 +39,15 @@
 
     private Destination _selectdDestination = new Destination();
 
+    
+    private void OnRefresh()
+    {
+     //  this.StateHasChanged();
+ NavigationManager.NavigateTo("/");
+         NavigationManager.NavigateTo("/result");
+
+
+    }
 
     IFirebaseConfig config = new FirebaseConfig
     {
