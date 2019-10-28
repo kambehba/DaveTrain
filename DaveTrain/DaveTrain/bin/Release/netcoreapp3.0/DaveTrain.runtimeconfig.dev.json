@@ -2,8 +2,7 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\Kam\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Kam\\.nuget\\packages",
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Users\\Kam\\.nuget\\packages"
     ]
   }
 }

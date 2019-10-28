@@ -13,8 +13,6 @@
     <h3 class="g4">Select Your Name:</h3>
     <select class="g5" @bind="AppData.PassengerId">
         
-        <option value=0>@string.Empty</option>
-
         @for (int i = 0; i < _passengers.Count; i++)
         {
             <option value="@_passengers[i].Id">@_passengers[i].Name</option>
@@ -34,40 +32,17 @@
 </div>
 
 @code{
-
-
-    private DateClient _dateClient;
+   
     private string currentWeekDay;
     private string currentMonth;
     private List<PassengerModel> _passengers;
     private string selectedPassenger;
-    protected override async Task OnInitializedAsync()
-    {
-
-        // result = await _dateClient.Client.GetStringAsync("http://worldclockapi.com/api/json/est/now");
-
-    }
-
-
-
-
+   
     protected override void OnInitialized()
     {
 
-      
-
-
-        //_dateClient = DateClient;
-
-        //if (string.IsNullOrEmpty(Winner.Name)) Winner.Name = PassengerService.GetWinner();
-
-        //var dateTime = DateTime.Now;
-        //currentWeekDay = dateTime.DayOfWeek.ToString();
-        //currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
-
-        //NavigationManager.LocationChanged += OnLocationChanges;
-
-        _dateClient = DateClient;
+        AppData.PassengerId = 0;
+       
         _passengers = new List<PassengerModel>();
         _passengers = passengerService.GetAllPassengers();
 
@@ -77,46 +52,12 @@
 
         NavigationManager.LocationChanged += OnLocationChanges;
 
-        AppData.PassengerId = 0;
-
        
-
-        
-
     }
 
+   
 
-    //protected override void OnInitialized()
-    //{
-
-    //    Task j = GetDateAsync();
-
-    //}
-    // string hh = "strff";
-
-
-    //private async Task GetDateAsync()
-    //{
-    //    //var response = await Http.GetStringAsync("http://worldclockapi.com/api/json/est/now");
-    //    //hh = response;
-
-    //   // var hh = await Http.GetAsync("http://worldclockapi.com/api/json/est/now");
-    //}
-
-
-
-    //public static class ApiHelper
-    //{
-    //    public static HttpClient ApiClient { get; set; }
-
-    //    public static void IntitializeClient()
-    //    {
-    //        ApiClient = new HttpClient();
-    //        ApiClient.DefaultRequestHeaders.Accept.Clear();
-    //        ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    //    }
-    //}
-
+   
     private string GetMonthByNumber(string n)
     {
         string month = string.Empty;
@@ -126,7 +67,7 @@
 
     private void GoToDest()
     {
-        
+
         NavigationManager.NavigateTo("/destination");
 
 
@@ -139,7 +80,7 @@
 
     }
 
-   
+
 
     private void OnLocationChanges(object sender, LocationChangedEventArgs e)
     {
@@ -148,7 +89,7 @@
         StateHasChanged();
     }
 
-  
+
 
     public class Passenger
     {
