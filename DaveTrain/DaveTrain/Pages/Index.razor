@@ -32,19 +32,34 @@
 </div>
 
 @code{
-   
+
     private string currentWeekDay;
     private string currentMonth;
     private List<PassengerModel> _passengers;
     private string selectedPassenger;
-   
+
     protected override void OnInitialized()
     {
 
         AppData.PassengerId = 0;
-       
+
         _passengers = new List<PassengerModel>();
-        _passengers = passengerService.GetAllPassengers();
+        //_passengers = passengerService.GetAllPassengers();
+
+        //var dateTime = DateTime.Now;
+        //currentWeekDay = dateTime.DayOfWeek.ToString();
+        //currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
+
+        //NavigationManager.LocationChanged += OnLocationChanges;
+
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+              _passengers = passengerService.GetAllPassengers();
 
         var dateTime = DateTime.Now;
         currentWeekDay = dateTime.DayOfWeek.ToString();
@@ -52,9 +67,13 @@
 
         NavigationManager.LocationChanged += OnLocationChanges;
 
-       
+              StateHasChanged();
+        }
+
     }
-   
+
+
+
     private string GetMonthByNumber(string n)
     {
         string month = string.Empty;
