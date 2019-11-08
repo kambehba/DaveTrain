@@ -18,7 +18,7 @@
             <option value="@_passengers[i].Id">@_passengers[i].Name</option>
         }
     </select>
-    @*<div class="g4"><h2>Destanation:</h2> <h5 style="color:crimson">@Winner.Name</h5> </div>*@
+  
 
     <button class="g6 btn-danger" @onclick="GoToDest">
         Start
@@ -33,7 +33,7 @@
 
 @code{
 
-    private string currentWeekDay;
+    private string currentWeekDay = "Loading...";
     private string currentMonth;
     private List<PassengerModel> _passengers;
     private string selectedPassenger;
@@ -44,14 +44,7 @@
         AppData.PassengerId = 0;
 
         _passengers = new List<PassengerModel>();
-        //_passengers = passengerService.GetAllPassengers();
-
-        //var dateTime = DateTime.Now;
-        //currentWeekDay = dateTime.DayOfWeek.ToString();
-        //currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
-
-        //NavigationManager.LocationChanged += OnLocationChanges;
-
+      
 
     }
 
@@ -59,20 +52,19 @@
     {
         if (firstRender)
         {
-              _passengers = passengerService.GetAllPassengers();
 
-        var dateTime = DateTime.Now;
-        currentWeekDay = dateTime.DayOfWeek.ToString();
-        currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
+            _passengers = passengerService.GetAllPassengers();
 
-        NavigationManager.LocationChanged += OnLocationChanges;
+            var dateTime = DateTime.Now;
+            currentWeekDay = dateTime.DayOfWeek.ToString();
+            currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
 
-              StateHasChanged();
+            NavigationManager.LocationChanged += OnLocationChanges;
+
+            StateHasChanged();
         }
 
     }
-
-
 
     private string GetMonthByNumber(string n)
     {
@@ -96,16 +88,12 @@
 
     }
 
-
-
     private void OnLocationChanges(object sender, LocationChangedEventArgs e)
     {
         var kk = AppData.Winner;
 
         StateHasChanged();
     }
-
-
 
     public class Passenger
     {

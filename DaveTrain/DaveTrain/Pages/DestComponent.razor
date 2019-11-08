@@ -1,5 +1,5 @@
-﻿@inject NavigationManager NavigationManager
-@page "/destination"
+﻿@page "/destination"
+@inject NavigationManager NavigationManager
 @using DaveTrain.Data
 @using FireSharp.Config;
 @using FireSharp.Interfaces;
@@ -8,22 +8,22 @@
 @inject DestinationService destinationService;
 @inject PassengerService passengerService;
 
-    <div class="container2">
-        <h3 class="g12">Where to for Lunch ?</h3>
-        <select class="g13" @bind="_selectdDestination">
-            <option value=0>@string.Empty</option>
+<div class="container2">
+    <h3 class="g12">Where to for Lunch ?</h3>
+    <select class="g13" @bind="_selectdDestination">
+        <option value=0>@string.Empty</option>
 
-            @for (int i = 0; i < _destinations.Count; i++)
-            {
-                <option value="@_destinations[i].Id">@_destinations[i].name</option>
-            }
-        </select>
+        @for (int i = 0; i < _destinations.Count; i++)
+        {
+            <option value="@_destinations[i].Id">@_destinations[i].name</option>
+        }
+    </select>
 
-        <button class="g16 btn-danger" @onclick="OnSubmit">
-            Submit
-        </button>
+    <button class="g16 btn-danger" @onclick="OnSubmit">
+        Submit
+    </button>
 
-    </div>
+</div>
 
 @code {
 
@@ -51,9 +51,9 @@
         _destinations = new List<DestinationModel>();
         _destinations = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
 
-        if(!string.IsNullOrEmpty(passengerService.PassengerHasVotedFor(AppData.PassengerId)))
+        if (!string.IsNullOrEmpty(passengerService.PassengerHasVotedFor(AppData.PassengerId)))
         {
-             NavigationManager.NavigateTo("/result");
+            NavigationManager.NavigateTo("/result");
         }
 
     }
@@ -62,7 +62,7 @@
     private void OnSubmit()
     {
 
-        var ww = client.Get("DavesTrain/destinations/" + _selectdDestination.ToString()+ "/vote");
+        var ww = client.Get("DavesTrain/destinations/" + _selectdDestination.ToString() + "/vote");
         int jj = ww.ResultAs<int>();
         jj = jj + 1;
         client.Set("DavesTrain/destinations/" + _selectdDestination + "/vote", jj);
@@ -72,7 +72,7 @@
 
         //  client.Push("DavesTrain/destinations/" + _selectdDestination.Id + "/passengers", AppData.Passenger);
 
-        passengerService.SetPassengerVote(AppData.PassengerId,destinationService.GetDestinationNameById(_selectdDestination));
+        passengerService.SetPassengerVote(AppData.PassengerId, destinationService.GetDestinationNameById(_selectdDestination));
 
         // _destinations = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
 
