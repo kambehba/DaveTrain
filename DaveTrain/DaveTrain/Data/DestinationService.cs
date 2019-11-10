@@ -20,6 +20,14 @@ namespace DaveTrain.Data
             BasePath = "https://dazzling-torch-8270.firebaseio.com/"
         };
 
+        public List<DestinationModel> GetAllDestinations()
+        {
+
+
+            var destinationsFromDatabase = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
+            return destinationsFromDatabase.ToList();
+        }
+
         public async Task dothis()
         {
             EventStreamResponse response = await client.OnAsync("DavesTrain/passengers", (sender, args, context) => {

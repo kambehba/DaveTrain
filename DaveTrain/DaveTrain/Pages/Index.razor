@@ -5,31 +5,46 @@
 @inject PassengerService passengerService;
 @inject DestinationService destinationService;
 
-<div class="container">
-    <h1 class="g0">Dave's Train</h1>
-    <h1 class="g2">@currentWeekDay</h1>
-    <h3 class="g3">@currentMonth</h3>
+    <div class="container">
 
-    <h3 class="g4">Select Your Name:</h3>
-    <select class="g5" @bind="AppData.PassengerId">
-        
-        @for (int i = 0; i < _passengers.Count; i++)
-        {
-            <option value="@_passengers[i].Id">@_passengers[i].Name</option>
-        }
-    </select>
-  
-
-    <button class="g6 btn-danger" @onclick="GoToDest">
-        Start
-    </button>
-
-    <button class="g7 b1 btn-warning" @onclick="ResetAllVotes">
-        Reset
-    </button>
+        <h1 class="g0">@currentWeekDay</h1>
+        <h3 class="g1">@currentMonth</h3>
+        <div class="g4">
+            <ResultComponent Passengers="@_passengers"></ResultComponent>
+        </div>
 
 
-</div>
+        <h3 class="g5">Your Name:</h3>
+        <select class="g6" @bind="selectedPassengerId">
+            <option value=0>@string.Empty</option>
+
+            @for (int i = 0; i < _passengers.Count; i++)
+            {
+                <option value="@_passengers[i].Id">@_passengers[i].Name</option>
+            }
+        </select>
+
+        <h3 class="g7">Where for Lunch ?</h3>
+        <select class="g8" @bind="_selectdDestination">
+            <option value=0>@string.Empty</option>
+
+            @for (int i = 0; i < _destinations.Count; i++)
+            {
+                <option value="@_destinations[i].name">@_destinations[i].name</option>
+            }
+        </select>
+
+
+        <button class="g9 btn-danger" @onclick="OnSubmit">
+            Submit
+        </button>
+
+        <button class="g10 btn-warning" @onclick="ResetAllVotes">
+            Reset
+        </button>
+
+
+    </div>
 
 @code{
 
@@ -37,14 +52,20 @@
     private string currentMonth;
     private List<PassengerModel> _passengers;
     private string selectedPassenger;
+    private int selectedPassengerId { get; set; }
+    private List<DestinationModel> _destinations;
+    private string _selectdDestination;
+
 
     protected override void OnInitialized()
     {
 
-        AppData.PassengerId = 0;
+        selectedPassengerId = 0;
 
         _passengers = new List<PassengerModel>();
-      
+        _destinations = new List<DestinationModel>();
+
+
 
     }
 
@@ -54,6 +75,11 @@
         {
 
             _passengers = passengerService.GetAllPassengers();
+            _destinations = destinationService.GetAllDestinations();
+
+
+
+
 
             var dateTime = DateTime.Now;
             currentWeekDay = dateTime.DayOfWeek.ToString();
@@ -81,9 +107,22 @@
 
     }
 
+    private void OnSubmit()
+    {
+
+        passengerService.SetPassengerVote(selectedPassengerId,_selectdDestination);
+        _passengers = passengerService.GetAllPassengers();
+        selectedPassengerId = 0;
+        _selectdDestination = string.Empty;
+        StateHasChanged();
+
+
+    }
+
     private void ResetAllVotes()
     {
         destinationService.ResetAllVotes();
+        _passengers = passengerService.GetAllPassengers();
 
 
     }

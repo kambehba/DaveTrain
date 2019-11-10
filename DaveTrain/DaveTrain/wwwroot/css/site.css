@@ -3,10 +3,16 @@
 html, body {
     margin: 0;
     height: 100%;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);*/
     /*background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 21%, #FFFB7D 35%, #ffffff 100%);*/
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+    background: rgb(125,126,125); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 a, .btn-link {
@@ -170,26 +176,24 @@ app {
 .container {
     display: grid;
     grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-    grid-template-areas: "g0 g0 g0" "g1 g1 g1" "g2 g2 g2" "g3 g3 g3" ". . ." "g4 g4 g4" "g5 g5 g5" ". . ." "g6 g6 g6" ". . ." "g7 g7 g7";
+    grid-template-rows: 50px 50px 10px 10px 140px 140px 50px 50px 50px 50px 50px 50px 50px 50px 50px 30px 50px;
+    grid-template-areas: "g0 g0 g0" "g1 g1 g1" "g2 g2 g2" "g3 g3 g3" "g4 g4 g4" "g4 g4 g4" ". . ." ". . ." "g5 g5 g5" "g6 g6 g6" ". . ." "g7 g7 g7" "g8 g8 g8" ". . ." "g9 g9 g9" ". . ." "g10 g10 g10";
 }
 
 .g0 {
     grid-area: g0;
-    text-decoration-style: solid;
+    text-decoration-style: wavy;
     margin-left: 1rem;
-    font-style:italic;
-   
-    
+    font-style: italic;
+    color: cornsilk;
 }
 
 .g1 {
     grid-area: g1;
-    text-decoration-style:wavy;
-    color:crimson;
-    margin-left:2rem;
-
-    
+    text-decoration-style: wavy;
+    color: cornsilk;
+    margin-left: 1rem;
+    font-style: italic;
 }
 
 .g2 {
@@ -216,7 +220,7 @@ app {
 .g5 {
     grid-area: g5;
     text-decoration-style: solid;
-    color: blue;
+    color: cornsilk;
     font-display: block;
     font-weight: Bold;
     font-size: larger;
@@ -229,75 +233,39 @@ app {
 
 .g7 {
     grid-area: g7;
+    text-decoration-style: solid;
+    color: cornsilk;
+    font-display: block;
+    font-weight: Bold;
+    font-size: larger;
 }
 
-.container2 {
-    margin:0;
-    display: grid;
-    grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-    grid-template-areas: "g10 g10 g10" "g11 g11 g11" "g12 g12 g12" "g13 g13 g13" "g14 g14 g14" "g15 g15 g15" ". . ." "g16 g16 g16";
+.g8 {
+    grid-area: g8;
+}
+
+.g9 {
+    grid-area: g9;
 }
 
 .g10 {
     grid-area: g10;
-    text-decoration-style: solid;
-    margin-left: 1rem;
 }
 
-.g11 {
-    grid-area: g11;
-    text-decoration-style: wavy;
-    color: crimson;
-    margin-left: 2rem;
-}
-
-.g12 {
-    grid-area: g12;
-    text-decoration-style: solid;
-    color: darkmagenta;
-    font-weight: bold;
-    font-size:larger;
-    
-}
-
-.g13 {
-    grid-area: g13;
-    text-decoration-style: solid;
-    color: blue;
-   
-}
-
-.g14 {
-    grid-area: g14;
-    text-decoration-style: solid;
-    color: crimson;
-    margin-left: 2rem;
-  
-}
-
-.g15 {
-    grid-area: g15;
-    text-decoration-style: solid;
-    color: blue;
-}
-
-.g16 {
-    grid-area: g16;
-}
 
 
 .container3 {
     margin: 0;
     display: grid;
     grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-    grid-template-areas: "g17 g17 g17" "g18 g18 g18" "g18 g18 g18" "g18 g18 g18" "g20 g20 g20" "g21 g21 g21" ". . ." "g22 g22 g22";
+    grid-template-rows: 50px 80px 80px 80px 20px;
+    grid-template-areas: "g17 g17 g17" "g18 g18 g18" "g18 g18 g18" "g18 g18 g18" "g20 g20 g20";
 }
 
 .g17 {
     grid-area: g17;
     text-decoration-style: solid;
+    color:cornsilk;
     margin-left: 1rem;
 }
 
@@ -305,11 +273,11 @@ app {
     grid-area: g18;
     text-decoration-style: wavy;
     color: #00FF41;
-    margin-left: 2rem;
+    margin-left:0;
     background-color: black;
     overflow: scroll;
-    height: 120px;
-    width: 270px;
+    height: 220px;
+    width: 280px;
 }
 
 .g19 {
@@ -323,7 +291,7 @@ app {
 .g20 {
     grid-area: g20;
     text-decoration-style: solid;
-    color: blue;
+    color: cornsilk;
 }
 
 .g21 {
