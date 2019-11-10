@@ -258,8 +258,8 @@ app {
     margin: 0;
     display: grid;
     grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 80px 80px 80px 20px;
-    grid-template-areas: "g17 g17 g17" "g18 g18 g18" "g18 g18 g18" "g18 g18 g18" "g20 g20 g20";
+    grid-template-rows: 50px 80px 80px 80px 30px 20px 30px;
+    grid-template-areas: "g17 g17 g17" "g18 g18 g18" "g18 g18 g18" "g18 g18 g18" "g20 g20 g20" ". . ." "g21 g21 g21";
 }
 
 .g17 {
@@ -298,7 +298,7 @@ app {
     grid-area: g21;
     text-decoration-style: solid;
     color: crimson;
-    margin-left: 2rem;
+    margin-left: 1rem;
 }
 
 .g22 {

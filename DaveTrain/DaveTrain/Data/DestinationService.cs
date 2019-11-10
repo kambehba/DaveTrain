@@ -74,12 +74,22 @@ namespace DaveTrain.Data
             return winner;
         }
 
-       public string GetDestinationNameById(int destId)
+       public DestinationModel GetDestinationNameById(int destId)
         {
             var destenationsFromDatabase  = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
             var nd = destenationsFromDatabase.Where(x => x.Id == destId).FirstOrDefault();
 
-            return nd.name;
+            return nd;
+        }
+
+        public void AddVoteToDestination(int destId)
+        {
+            var destenationsFromDatabase = client.Get("DavesTrain/destinations/").ResultAs<List<DestinationModel>>();
+            var nd = destenationsFromDatabase.Where(x => x.Id == destId).FirstOrDefault();
+            nd.vote = nd.vote + 1;
+
+            client.Set("DavesTrain/destinations/"+destId+"/vote",nd.vote);
+
         }
 
         public void ResetAllVotes()

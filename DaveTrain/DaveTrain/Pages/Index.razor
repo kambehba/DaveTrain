@@ -10,7 +10,7 @@
         <h1 class="g0">@currentWeekDay</h1>
         <h3 class="g1">@currentMonth</h3>
         <div class="g4">
-            <ResultComponent Passengers="@_passengers"></ResultComponent>
+            <ResultComponent Passengers="@_passengers" Winner="@_winner"></ResultComponent>
         </div>
 
 
@@ -25,12 +25,12 @@
         </select>
 
         <h3 class="g7">Where for Lunch ?</h3>
-        <select class="g8" @bind="_selectdDestination">
+        <select class="g8" @bind="_selectdDestinationId">
             <option value=0>@string.Empty</option>
 
             @for (int i = 0; i < _destinations.Count; i++)
             {
-                <option value="@_destinations[i].name">@_destinations[i].name</option>
+                <option value="@_destinations[i].Id">@_destinations[i].name</option>
             }
         </select>
 
@@ -54,8 +54,9 @@
     private string selectedPassenger;
     private int selectedPassengerId { get; set; }
     private List<DestinationModel> _destinations;
-    private string _selectdDestination;
-
+    private int _selectdDestinationId;
+    private DestinationModel _selectedDestination;
+    private string _winner = "pending...";
 
     protected override void OnInitialized()
     {
@@ -64,6 +65,7 @@
 
         _passengers = new List<PassengerModel>();
         _destinations = new List<DestinationModel>();
+        _selectedDestination = new DestinationModel();
 
 
 
@@ -77,16 +79,12 @@
             _passengers = passengerService.GetAllPassengers();
             _destinations = destinationService.GetAllDestinations();
 
-
-
-
-
             var dateTime = DateTime.Now;
             currentWeekDay = dateTime.DayOfWeek.ToString();
             currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
 
             NavigationManager.LocationChanged += OnLocationChanges;
-
+             _winner = destinationService.GetWinner(); 
             StateHasChanged();
         }
 
@@ -109,11 +107,14 @@
 
     private void OnSubmit()
     {
-
-        passengerService.SetPassengerVote(selectedPassengerId,_selectdDestination);
+        _selectedDestination = destinationService.GetDestinationNameById(_selectdDestinationId);
+        passengerService.SetPassengerVote(selectedPassengerId,_selectedDestination.name);
         _passengers = passengerService.GetAllPassengers();
         selectedPassengerId = 0;
-        _selectdDestination = string.Empty;
+        _selectdDestinationId = 0;
+        _selectedDestination.name = string.Empty;
+        destinationService.AddVoteToDestination(_selectedDestination.Id);
+        _winner = destinationService.GetWinner(); 
         StateHasChanged();
 
 
@@ -123,6 +124,8 @@
     {
         destinationService.ResetAllVotes();
         _passengers = passengerService.GetAllPassengers();
+
+        _winner = destinationService.GetWinner(); 
 
 
     }
