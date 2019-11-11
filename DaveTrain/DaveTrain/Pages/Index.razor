@@ -39,7 +39,11 @@
             Submit
         </button>
 
-        <button class="g10 btn-warning" @onclick="ResetAllVotes">
+        <button class="g10 btn-success" @onclick="OnRefresh">
+            Refresh
+        </button>
+
+        <button class="g11 btn-warning" @onclick="ResetAllVotes">
             Reset
         </button>
 
@@ -79,14 +83,34 @@
             _passengers = passengerService.GetAllPassengers();
             _destinations = destinationService.GetAllDestinations();
 
+            destinationService.DataUpdated += UpdatePage;
+
             var dateTime = DateTime.Now;
             currentWeekDay = dateTime.DayOfWeek.ToString();
             currentMonth = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.ToString("dd") + ", " + DateTime.Now.ToString("yyyy");
 
             NavigationManager.LocationChanged += OnLocationChanges;
-             _winner = destinationService.GetWinner(); 
+            _winner = destinationService.GetWinner();
             StateHasChanged();
         }
+
+    }
+
+    private void OnRefresh()
+    {
+         _passengers = passengerService.GetAllPassengers();
+
+          StateHasChanged();
+    }
+
+    private void UpdatePage(object sender,EventArgs e)
+    {
+        _passengers = passengerService.GetAllPassengers();
+
+        selectedPassengerId = 0;
+
+
+
 
     }
 
@@ -114,7 +138,7 @@
         _selectdDestinationId = 0;
         _selectedDestination.name = string.Empty;
         destinationService.AddVoteToDestination(_selectedDestination.Id);
-        _winner = destinationService.GetWinner(); 
+        _winner = destinationService.GetWinner();
         StateHasChanged();
 
 
@@ -125,7 +149,7 @@
         destinationService.ResetAllVotes();
         _passengers = passengerService.GetAllPassengers();
 
-        _winner = destinationService.GetWinner(); 
+        _winner = destinationService.GetWinner();
 
 
     }

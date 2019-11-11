@@ -176,8 +176,8 @@ app {
 .container {
     display: grid;
     grid-template-columns: 90px 90px 90px;
-    grid-template-rows: 50px 50px 10px 10px 140px 140px 50px 50px 50px 50px 50px 50px 50px 50px 50px 30px 50px;
-    grid-template-areas: "g0 g0 g0" "g1 g1 g1" "g2 g2 g2" "g3 g3 g3" "g4 g4 g4" "g4 g4 g4" ". . ." ". . ." "g5 g5 g5" "g6 g6 g6" ". . ." "g7 g7 g7" "g8 g8 g8" ". . ." "g9 g9 g9" ". . ." "g10 g10 g10";
+    grid-template-rows: 50px 50px 10px 10px 140px 140px 50px 50px 50px 50px 50px 50px 50px 50px 50px 30px 50px 30px 50px;
+    grid-template-areas: "g0 g0 g0" "g1 g1 g1" "g2 g2 g2" "g3 g3 g3" "g4 g4 g4" "g4 g4 g4" ". . ." ". . ." "g5 g5 g5" "g6 g6 g6" ". . ." "g7 g7 g7" "g8 g8 g8" ". . ." "g9 g9 g9" ". . ." "g10 g10 g10" ". . ." "g11 g11 g11";
 }
 
 .g0 {
@@ -250,6 +250,10 @@ app {
 
 .g10 {
     grid-area: g10;
+}
+
+.g11 {
+    grid-area: g11;
 }
 
 
